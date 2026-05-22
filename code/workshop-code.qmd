@@ -120,30 +120,24 @@ drought_exp_clean <- drought_exp |>
   select(species_name, water_treatment, sla, total_g)
 ```
 
+Insert code to double check the structure of the data frame here.  
+
 ```{r}
 #| label: checking-structure
 
 str(drought_exp_clean)
 ```
 
-Insert code to double check the structure of the data frame here.  
+Insert code to display 10 random rows from the data frame here.  
 
 ```{r}
 #| label: ten-rows
 
 slice_sample(
   drought_exp_clean,
-  n = 10)
+  n = 10
+)
 ```
-
-
-
-
-Insert code to display 10 random rows from the data frame here.  
-
-
-
-
 
 # 3. Visualizing data
 
@@ -155,9 +149,22 @@ Label the axes with units where appropriate.
 
 Add a title describing the relationship (e.g. as SLA increases, total mass ______). 
 
+```{r}
 
+ggplot(data = drought_exp_clean,
+       # SLA on x-axis and total mass on y-axis
+       mapping = aes(x = sla,
+                     y = total_g,
+                     )) +
+  # first layer: points
+  geom_point() +
+  # relabelling x- and y-axes
+  # adding title
+  labs(x = "SLA",
+       y = "Total Mass (g)",
+       title = "As SLA increases, total mass increases")
 
-
+```
 
 ## What are the differences in total mass between water treatments?
 
